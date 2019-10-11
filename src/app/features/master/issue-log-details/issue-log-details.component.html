@@ -1,0 +1,105 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <sa-widgets-grid>
+  
+      <!-- row -->
+      <div class="row">
+  
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-8 col-sm-offset-2">
+  
+          <!-- Widget ID (each widget will need unique ID)-->
+          <div sa-widget [colorbutton]="false" [editbutton]="false"   [deletebutton]="false"    [togglebutton]="false">
+         
+            <header>
+                <div class="text-center">
+              <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+              <h2>&nbsp;Issue Log</h2>
+              </div>
+            </header>
+  
+            <!-- widget div-->
+            <div>
+  
+              <!-- widget content -->
+              <div class="widget-body">
+                      <form name="bankForm" #bankForm="ngForm"  ngNativeValidate>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Tiket No.</label>
+                            <input type="text" class="form-control" placeholder="Enter Tiket No."   required/>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Log Date</label>
+                            <input type="date" class="form-control"   required/>
+                        </div>
+                    </div>
+                
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>Employee<span class="errorMessage" style="color:red;">*</span></label>
+                              <select class="cleanSelect form-control" id="lng"  name="CompId" required>
+                                  <option value="" hidden>--Select Employee--</option>
+                                 
+                              </select>
+                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>Last Remark</label>
+                              <input type="text" class="form-control" placeholder="Enter Last Remark"   required/>
+                          </div>
+                      </div>
+                </div>
+          
+              <div class="row">
+                  <div class="col-sm-12">
+                      <div class="form-group text-center">
+                          <label class="checkbox-inline">
+                              <input type="checkbox" value=""  name="IsActive">Is Active ?
+                          </label>
+                      </div>
+                  </div>
+              </div>
+              <hr class="hr_basic" />
+              <div class="row ">
+                  <div class="col-sm-12 ">
+                      <a class="btn btn-default pull-right" routerLink="/master/issue_log_list">
+                          <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back
+                      </a>
+                      <button class=" btn btn-primary btn-right pull-right" type="submit" >
+                          <i class="glyphicon glyphicon-send"></i> &nbsp;&nbsp;Submit
+                      </button>
+                      <button type="button" name="" class="pull-right btn btn-primary" >
+                          <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                      </button>
+                  </div>
+              </div>
+            </form>
+                                                  
+              </div>
+              <!-- end widget content -->
+  
+            </div>
+            <!-- end widget div -->
+  
+          </div>
+          <!-- end widget -->
+  
+        </article>
+        <!-- WIDGET END -->
+  
+      </div>
+    </sa-widgets-grid>
+    <!-- end widget grid -->
+  
+  
+  </div>
+  <!-- END MAIN CONTENT -->
+  

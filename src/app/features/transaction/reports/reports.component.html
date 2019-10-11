@@ -1,0 +1,94 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+  <!-- widget grid -->
+  <sa-widgets-grid>
+
+    <!-- row -->
+    <div class="row">
+        <form name="reportform" #formData="ngForm" (ngSubmit)="GetDetails()" ngNativeValidate>
+      <!-- NEW WIDGET START -->
+      <article class="col-sm-12 col-md-12 ">
+
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div sa-widget [colorbutton]="false" [editbutton]="false"  [togglebutton]="false"  [deletebutton]="false">
+          
+              <header>
+                
+                <div class="text-center">
+                <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+                <h2>&nbsp;Reports</h2>
+                </div>
+              </header>
+
+              <!-- widget div-->
+              <div>
+
+                <!-- widget content -->
+                <div class="widget-body">
+                  <div class="row">
+                    <div class="col-sm-2 ">
+                      <div class="form-group">
+                        <label>Ticket No. </label>
+                        <input type="text" class="form-control" placeholder="Enter Ticket No" [(ngModel)]="report.TicketNo" name = "TicketNo" saNumericonly  maxlength="18"  />
+                    </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                          <label>From date<span class="errorMessage" style="color:red;">*</span></label>
+                          <input  type="text" class="form-control" placeholder="Select From Date" 
+                          autocomplete="off" 
+                          placeholder="Select From Date" 
+                          onkeydown="return false" 
+                          [(ngModel)]="report.FDate"  name="FDate" 
+                          [bsConfig]="{containerClass: 'theme-dark-blue',minDate:0,maxDate:maxdate,showWeekNumbers:false,dateInputFormat:'DD-MMM-YYYY'}"                             
+                          bsDatepicker required/>
+                      </div>
+                  </div>
+                  <div class="col-sm-2">
+                      <div class="form-group">
+                          <label>To date<span class="errorMessage" style="color:red;">*</span></label>
+                          <input  type="text" class="form-control" placeholder="Select To Date" 
+                           autocomplete="off" 
+                           placeholder="Select To Date" 
+                           onkeydown="return false"
+                           [(ngModel)]="report.TDate" name="TDate" 
+                           [bsConfig]="{containerClass: 'theme-dark-blue',minDate:report.FDate,maxDate:maxdate,showWeekNumbers:false,dateInputFormat:'DD-MMM-YYYY'}"                            
+                           bsDatepicker required/>
+                      </div>
+                  </div>
+               
+                      <div class="col-sm-2 " style="margin-top:25px;">
+                        <div class="form-group ">
+                            <button class="btn btn-primary " type="submit" *ngIf="!lodershow"
+                            type="submit">
+                            <i class=" fa fa-search"></i> Get Details
+                            </button>  
+                            <button type="button" name="" class="btn btn-primary" *ngIf="lodershow" >
+                              <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                          </button>                
+                        </div>
+                      </div>
+                    </div><br>
+                    <div class="row">
+                      <div class="col-sm-12 " *ngIf="gridHide" >
+                        <report-grid [data]="gridOptions"></report-grid>
+                      </div>
+                    </div>
+                </div>
+                                                    
+              </div>
+           
+
+              </div>
+      </article>
+      </form>
+    </div>
+
+    <!-- end row -->
+
+  </sa-widgets-grid>
+  <!-- end widget grid -->
+
+
+</div>
+<!-- END MAIN CONTENT -->

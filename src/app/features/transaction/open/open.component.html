@@ -1,0 +1,112 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <sa-widgets-grid>
+  
+      <!-- row -->
+      <div class="row">
+  
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-12 ">
+  
+          <!-- Widget ID (each widget will need unique ID)-->
+          <div sa-widget [colorbutton]="false" [editbutton]="false"  [togglebutton]="false"  [deletebutton]="false">
+        
+                <header>
+                    <div class="text-center">
+                  <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+                  <h2> &nbsp;Open Tickets</h2>
+                  </div>
+                </header>
+  
+                <!-- widget div-->
+                <div>
+                   
+                    <form name="openedform" #openedformData="ngForm" (ngSubmit)="GetDetails()" ngNativeValidate>
+                  <!-- widget content -->
+                  <div class="widget-body">
+  
+                      <div class="row">
+                          <div class="col-sm-2 ">
+                          <div class="form-group">
+                              <label>Product</label>
+                              <select class="cleanSelect form-control" [(ngModel)]="opened.ProductCode" name="ProductCode" (change)="GetProductIssue(opened.ProductCode)" >
+                                  <option value="" selected>--Select Product--</option>
+                                  <option *ngFor="let item of ProdDetails" value="{{item.ProductCode}}" selected>{{item.ProductName}}</option>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="col-sm-2 ">
+                            <div class="form-group">
+                                <label>Product issue Type </label>
+                                <select class="cleanSelect form-control" [(ngModel)]="opened.ProdissueCode" name="ProdissueCode" >
+                                   
+                                    <option value="" selected>--Select Product Issue Type--</option>
+                                    <option *ngFor="let item of ProdIssueDetails" value="{{item.ProdissueCode}}" selected>{{item.ProdgDesc}}</option>
+                                   
+                                </select>
+                            </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label>From date<span class="errorMessage" style="color:red;">*</span></label>
+                                  <input type="text" class="form-control" name="FDate" autocomplete="off" 
+                                  placeholder="Select From Date" 
+                                  onkeydown="return false" 
+                                  [(ngModel)]="opened.FDate" 
+                                   
+                                  [bsConfig]="{containerClass: 'theme-dark-blue',minDate:0,maxDate:maxdate,showWeekNumbers:false,dateInputFormat:'DD-MMM-YYYY'}"                             
+                                  bsDatepicker required />
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label>To date<span class="errorMessage" style="color:red;">*</span></label>
+                                   <input type="text" class="form-control" name="TDate"  autocomplete="off" 
+                                   placeholder="Select To Date" 
+                                   onkeydown="return false"
+                                   [(ngModel)]="opened.TDate"
+                                   [bsConfig]="{containerClass: 'theme-dark-blue',minDate:opened.FDate,maxDate:maxdate,showWeekNumbers:false,dateInputFormat:'DD-MMM-YYYY'}"                            
+                                   bsDatepicker required />
+                              </div>
+                          </div>
+                        <div class="col-sm-2" style="margin-top:25px;">
+                          <div class="form-group ">
+                              <button class="btn btn-primary " type="submit" *ngIf="!btnshow"
+                              type="submit">
+                              <i class=" fa fa-search"></i> Get Details
+                              </button>  
+                              <button type="button" name="" class="btn btn-primary" *ngIf="btnshow" >
+                                <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                            </button>
+                              <!-- view_Button_hide -->
+                              <!-- <a routerLink="/transaction/open_view"><button class="btn btn-primary " (click)="GetDetails()" ng-show="btnshow"
+                              type="submit">
+                              <i class=" fa fa-search"></i> View
+                              </button>   </a>         -->
+                          </div>
+                        </div>
+                      </div><br>
+                      <div class="row">
+                        <div class="col-sm-12" *ngIf="gridHide">
+                          <opened-grid [data]="gridOptions| async"></opened-grid>
+                        </div>
+                      </div>
+                  </div>
+                </form>                                 
+                </div>
+             
+  
+                </div>
+        </article>
+      </div>
+  
+      <!-- end row -->
+  
+    </sa-widgets-grid>
+    <!-- end widget grid -->
+  
+  
+  </div>
+  <!-- END MAIN CONTENT -->
+  

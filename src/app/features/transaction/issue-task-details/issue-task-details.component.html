@@ -1,0 +1,122 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+  <!-- widget grid -->
+  <sa-widgets-grid>
+
+    <!-- row -->
+    <div class="row">
+
+      <!-- NEW WIDGET START -->
+      <article class="col-sm-12 col-md-8 col-sm-offset-2">
+
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div sa-widget [colorbutton]="false" [editbutton]="false"   [deletebutton]="false"    [togglebutton]="false">
+       
+          <header>
+            <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+            <h2>Issue Task  </h2>
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+            <!-- widget content -->
+            <div class="widget-body">
+                    <form name="bankForm" #bankForm="ngForm"  ngNativeValidate>
+              <div class="row">
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>Product <span  style="color:red;">*</span></label>
+                          <select class="cleanSelect form-control" id="lng"  name="CompId" required>
+                              <option value="" hidden>--Select Product--</option>
+                             
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>Domain<span  style="color:red;">*</span></label>
+                          <select class="cleanSelect form-control" id="lng"  name="CompId" required>
+                              <option value="" hidden>--Select--</option>
+                             
+                          </select>
+                      </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>Product Suite<span  style="color:red;">*</span></label>
+                          <select class="cleanSelect form-control" id="lng"  name="CompId" required>
+                              <option value="" hidden>--Select --</option>
+                             
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>Product Issue<span  style="color:red;">*</span></label>
+                          <select class="cleanSelect form-control" id="lng"  name="CompId" required>
+                              <option value="" hidden>--Select--</option>
+                             
+                          </select>
+                      </div>
+                  </div>
+                </div>
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Product Issue Sub Group Description</label>
+                        <input type="text" class="form-control" placeholder="Enter Product Issue Sub Group Description"   required/>
+                    </div>
+                </div>
+              
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group text-center">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value="">Is Active ?
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <hr class="hr_basic" />
+            <div class="row ">
+                <div class="col-sm-12 ">
+                    <a class="btn btn-default pull-right" routerLink="/transaction/Issue_task">
+                        <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back
+                    </a>
+                    <button class=" btn btn-primary btn-right pull-right" type="submit" >
+                        <i class="glyphicon glyphicon-send"></i> &nbsp;&nbsp;Submit
+                    </button>
+                    <button type="button" name="" class="pull-right btn btn-primary" >
+                        <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                    </button>
+                </div>
+            </div>
+          </form>
+                                                
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+        <!-- end widget -->
+
+      </article>
+      <!-- WIDGET END -->
+
+    </div>
+
+    <!-- end row -->
+
+  </sa-widgets-grid>
+  <!-- end widget grid -->
+
+
+</div>
+<!-- END MAIN CONTENT -->

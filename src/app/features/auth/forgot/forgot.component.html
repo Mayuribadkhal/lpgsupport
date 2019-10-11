@@ -1,0 +1,54 @@
+<header id="header" class="animated fadeInDown">
+
+  <!-- <div id="logo-group">
+      <span id="logo" style="margin-top:18px!important;"> <img src="assets/img/support1.png" alt="SmartAdmin" style="width:114px!important;"> </span>
+  </div> -->
+  <div id="logo-group" style="width:100%;text-align:center;">
+    <span id="logo" class="pull-left" style="width:10%!important;margin-top:18px;text-align:left!important;"><img src="assets/img/support1.png" alt="SmartAdmin" style="width:134px!important;"></span><span id="logo" style="margin-top:18px!important;width:80%;"> <p  style="font-weight: 500;font-size: 20px;color: #d7600a;">Production Support and Service Management</p></span>  <span id="extr-page-header-space" style="width:10%;"> <a routerLink="/auth/login" class="btn btn-danger">Sign In</a> </span> 
+  </div>
+
+ 
+
+</header>
+<div id="main" role="main" class="animated fadeInDown">
+
+  <div id="content" class="container">
+
+      <div class="row">
+          
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4" style="margin-top:10%;">
+                <div class="well no-padding">
+                  <form id="login-form" class="smart-form client-form" name="ForgotPForm" #ForgotPForm="ngForm" (ngSubmit)="ForgotPass()" ngNativeValidate>
+                    <header>
+                      Forgot Password
+                    </header>
+        
+                    <fieldset>
+                 
+                      <section>
+                        <label class="label">Email ID</label>
+                        <label class="input"> <i class="icon-append fa fa-envelope"></i>
+                          <input type="email" name="email" [(ngModel)]="forgot.EmpEmail" name="EmpEmail" autocomplete="off" pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' required>
+                         </label>
+                      </section>
+        
+                    </fieldset>
+                    <footer>
+                      <button class="btn btn-primary" *ngIf="!loadershow">
+                        <i class="fa fa-refresh"></i> Send Password
+                      </button>
+                      <button type="button" name="" class="btn btn-primary" *ngIf="loadershow">
+                        <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                    </button>
+                    </footer>
+                  </form>
+        
+                </div>
+        
+        
+              </div>
+            </div>
+  </div>
+
+</div>
+

@@ -1,0 +1,276 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* #GOOGLE FONT */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700");
+@import url("../node_modules//ngx-bootstrap/datepicker/bs-datepicker.css");
+
+/* #left-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 904;
+    padding-top: 0;
+} */
+.btn-right{margin-right:10px;}
+
+.smart-style-1 #logo-group {
+    background: none!important;
+}
+
+.welcome_name {
+    width: 65%;
+    color: #fff;
+    font-weight: bold;
+    margin: 16px 10px;
+    text-align: center;
+}
+
+#logo img {
+    width: 92px!important;
+    height: auto;
+    padding-left: 3px;
+}
+
+.smart-style-1 #header {
+    background-image: none;
+    background-color: #2674b4!important;
+}
+
+#logo img {
+    width: 121px!important;
+    height: auto;
+    padding-left: 3px;
+    margin-top: -7px!important;
+}
+
+
+.demo>span {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    height: 30px;
+    width: 30px;
+    border-radius: 5px 0 0 5px;
+    background: #F1DA91;
+    padding: 2px;
+    text-align: center;
+    line-height: 28px;
+    cursor: pointer;
+    display: none;
+}
+
+.menu-on-top .menu-item-parent {
+    max-width: 113px!important;
+    min-width: 50px!important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* 
+For Alert */
+
+
+
+.bigBox {
+    position: fixed;
+       right: 10px;
+       bottom: 10px;
+       background-color: #004d60;
+       padding-left: 10px;
+       padding-top: 10px;
+       padding-right: 10px;
+       padding-bottom: 5px;
+       width: 390px;
+       height: 150px;
+       color: #fff;
+       z-index: 99999;
+       box-sizing: content-box;
+       -webkit-box-sizing: content-box;
+       -moz-box-sizing: content-box;
+       border-left: 5px solid rgba(0,0,0,.15);
+       overflow: hidden;
+       margin-bottom:39px;
+   }
+   
+       
+   
+   .bigBox span {
+    margin-top: 80px;
+           left: 50%;
+           top: 50%;
+           transform: translate(-50%, -50%);
+           float: left;
+           position: relative;
+           font-size: 17px;
+           font-weight: 300;
+           letter-spacing: -1px;
+           padding: 5px 0 !important;
+           display: block;
+       }
+   
+       
+   
+   .bigBox p {
+           font-size: 13px;
+               margin-top: 113px;
+           margin-top: 10px;
+           position: absolute;
+           top: 60%;
+          left: 54%;
+          transform: translate(-60%, -20%);
+              float: left;
+       }
+   
+   
+   
+   #divMiniIcons {
+       position: fixed;
+       width: 415px;
+       right: 10px;
+       bottom: 215px;
+       z-index: 9999;
+       float: right;
+   }
+   
+   
+   
+   .botClose {
+       position: absolute;
+       right: 10px;
+       height: 16px;
+       width: 15px;
+       cursor: pointer;
+       font-size: 18px;
+       opacity: .5;
+       display: block;
+       top: 15px;
+   }
+   
+       
+   
+   .botClose:hover {
+           opacity: 1;
+       }
+   
+   #divMiniIcons .cajita {
+       text-align: center;
+       vertical-align: middle;
+       padding: 4px 6px;
+       color: #FFF;
+       float: right;
+       cursor: pointer;
+       display: block;
+       background-color: red;
+       font-size: 17px;
+       margin-left: 4px;
+       margin-top: 5px;
+   }
+   
+      
+   
+    #divMiniIcons .cajita:active {
+           top: 1px;
+           left: 1px;
+           position: relative;
+       }
+   
+   .cajita img {
+       width: 23px;
+       height: 23px;
+       padding-left: 3px;
+       padding-top: 3px;
+   }
+   
+   
+   
+   .bigBox .bigboxicon {
+       font-size: 30px;
+       position: absolute;
+       top: 40px;
+       z-index: 0;
+       left: 50%;
+       top: 35%;
+       transform: translate(-50%, -50%);
+       float: left;
+   }
+   
+   
+   
+   .bigBox .bigboxnumber {
+       width: 100%;
+       text-align: right;
+       font-size: 25px;
+   }
+   
+   
+   .jarviswidget-color-blue>header {
+       border-color: #45474b!important;
+       background: #45474b;
+       color: #fff;
+   }
+   
+   
+   .SmallBox {
+       position: absolute;
+       right: 5px;
+       top: 14px;
+       width: 420px;
+       color: #fff;
+       z-index: 9999;
+       overflow: hidden;
+       border: 1px solid transparent;
+   }
+   
+   .SmallBox span {
+       font-size: 17px;
+       font-weight: 300;
+       letter-spacing: -1px;
+       display: block;
+       /* margin: 3px 0; */
+       padding-top: 8px;
+   }
+   .miniPic {
+       position: absolute;
+       bottom: 1px;
+       right: 9px;
+   }
+   .right-align {
+    text-align:right
+}
+
+.grid-label-center {
+    text-align:center;
+}
+
+.text-c {
+    text-align: center;
+}
+
+
+.input {
+    position: relative;
+    display: block;
+    font-weight: 400;
+    
+}
+
+.form-control-supportsystem {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    pointer-events: inherit;
+    cursor: pointer;
+}
+.showPass{
+    color: #000 !important;
+}

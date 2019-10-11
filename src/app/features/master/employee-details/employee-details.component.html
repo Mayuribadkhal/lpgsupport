@@ -1,0 +1,160 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <sa-widgets-grid>
+  
+      <!-- row -->
+      <div class="row">
+  
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-8 col-sm-offset-2">
+  
+          <!-- Widget ID (each widget will need unique ID)-->
+          <div sa-widget [colorbutton]="false" [editbutton]="false"   [deletebutton]="false"    [togglebutton]="false">
+         
+            <header>
+                    <div class="text-center">
+              <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i></span>
+              <h2>&nbsp;Employee</h2>
+              </div>
+            </header>
+  
+            <!-- widget div-->
+            <div>
+  
+              <!-- widget content -->
+              <div class="widget-body">
+                      <form name="empForm" #bankForm="ngForm" (ngSubmit)="postemp()" autocomplete="off" ngNativeValidate>
+                <!-- <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Employee type<span class="errorMessage" style="color:red;">*</span></label>
+                            <select class="cleanSelect form-control" id="lng" [(ngModel)]="employeed.EmpType"name="EmpType" required>
+                                <option value="" hidden>--Select Employee type--</option>
+                                <option value="EX">External</option>
+                                <option value="IN">Internal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Company Name<span class="errorMessage" style="color:red;">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter Company Name" [(ngModel)]="employeed.CompanyName" name="CompanyName" saAlphaonly   required/>
+                            </div>
+                        </div>
+                  </div> -->
+                  <div class="row">
+                        <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Employee Name<span  style="color:red;">*</span></label>
+                                    <input type="text" class="form-control" placeholder="Enter Employee Name"  [(ngModel)]="employeed.EmpName" name="EmpName" maxlength="50" saAlphaonly required/>
+                                </div>
+                            </div>
+
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>Gender<span  style="color:red;">*</span></label>
+                              <select class="form-control" [(ngModel)]="employeed.Gender"name="Gender" required>
+                                <option value="" hidden selected>--Select Gender--</option>
+                                <option value="M" selected>Male</option>
+                                <option value="F" selected>Female</option>
+                                </select>
+                          </div>
+                      </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>Mobile No.<span  style="color:red;">*</span></label>
+                          <input type="text" class="form-control" placeholder="Enter Mobile No." [(ngModel)]="employeed.EmpMobile" name="EmpMobile" minlength="10" maxlength="10" saNumericonly required/>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>Email ID.<span  style="color:red;">*</span></label>
+                          <input type="email" class="form-control" placeholder="Enter Email ID." [(ngModel)]="employeed.EmpEmail" name="EmpEmail"  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" maxlength="150" autocomplete="off" required/>
+                      </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Designation<span  style="color:red;">*</span></label>
+                            <!-- <input type="text" class="form-control" placeholder="Enter Email ID." [(ngModel)]="employeed.DegnCode" name="DegnCode"  required/> -->
+                            <select class="cleanSelect form-control" id="lng" [(ngModel)]="employeed.DesgCode" name="DesgCode" required >
+                                <option value="" hidden selected>--Select Designation--</option>
+                                <option *ngFor="let desgi of DesigData" value="{{desgi.DesgCode}}">{{desgi.DesgName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Password<span  style="color:red;">*</span></label>
+                            <label class="input">
+                            <input type="{{inputTypeOne}}" class="form-control" placeholder="Enter Password"  [(ngModel)]="employeed.EmpPwd" name="EmpPwd" minlength="6" maxlength="20" required/>
+                            <span class="showPass glyphicon {{classNameOne}} form-control-supportsystem " (click)="HideShowPasswordOne()"></span>
+                        </label>
+                        </div>
+                        <span style="color:red">{{msg2}}</span>
+                    </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Confirm Password<span style="color:red;">*</span></label>
+                                <label class="input">
+                                <input type="{{inputTypeTwo}}" class="form-control" placeholder="Enter Confirm Password"  [(ngModel)]="employeed.cnfPwd" name="cnfPwd" (ngModelChange)="ConfirmPassword(employeed)" minlength="6" maxlength="20" required/>
+                                <span class="showPass glyphicon {{classNameOne}} form-control-supportsystem " (click)="HideShowPasswordTwo()"></span>
+                            </label>
+                            </div>
+                            <span class="error help-block" style="color:red">{{eMessage}}</span>
+                        </div>
+                      </div>
+              <div class="row">
+                  <div class="col-sm-12">
+                      <div class="form-group text-center">
+                          <label class="checkbox-inline">
+                            <input type="checkbox"  [(ngModel)]="employeed.IsActive" name="IsActive"  value="">Is Active ?
+                          </label>
+                      </div>
+                  </div>
+              </div>
+              <hr class="hr_basic" />
+              <div class="row ">
+                  <div class="col-sm-12 ">
+                      <a class="btn btn-default pull-right" routerLink="/master/employee_list">
+                          <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back
+                      </a>
+                      <button class=" btn btn-primary btn-right pull-right" type="submit" *ngIf=!btnshow [disabled]="employeed.cnfPwd!=employeed.EmpPwd" >
+                          <i class="glyphicon glyphicon-send"></i> &nbsp;&nbsp;Submit
+                      </button>
+                      <button type="button" name="" class="btn btn-primary btn-right pull-right" *ngIf=btnshow >
+                          <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                      </button>
+                  </div>
+              </div>
+            </form>
+                                                  
+              </div>
+              <!-- end widget content -->
+  
+            </div>
+            <!-- end widget div -->
+  
+          </div>
+          <!-- end widget -->
+  
+        </article>
+        <!-- WIDGET END -->
+  
+      </div>
+  
+      <!-- end row -->
+  
+    </sa-widgets-grid>
+    <!-- end widget grid -->
+  
+  
+  </div>
+  <!-- END MAIN CONTENT -->
+  

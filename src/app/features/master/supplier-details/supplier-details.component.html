@@ -1,0 +1,139 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+
+  <!-- widget grid -->
+  <sa-widgets-grid>
+      
+    <!-- row -->
+    <div class="row">
+      
+      <!-- NEW WIDGET START -->
+      <article class="col-sm-12 col-md-8 col-sm-offset-2">
+      
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div sa-widget [colorbutton]="false" [editbutton]="false"   [deletebutton]="false"    [togglebutton]="false">
+            
+          <header>
+              <div class="text-center">
+                  <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+                  <h2>&nbsp;Supplier </h2>
+              </div>
+          </header>
+      
+          <!-- widget div-->
+          <div>
+      
+            <!-- widget content -->
+            <div class="widget-body">
+
+                <form name="sipplierDetailsForm" #sipplierDetailsForm="ngForm" (ngSubmit)="OnSubmit()" ngNativeValidate>
+              
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>Supplier Name<span class="errorMessage" style="color:red;">*</span></label>
+                              <input    type="text" class="form-control" placeholder="Enter Supplier Name "  
+                                        [(ngModel)]="supplier.SuplierName" name="SuplierName" maxlength="50" 
+                                        AlphaonlyDirective required/>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>Email ID.<span class="errorMessage" style="color:red;">*</span></label>
+                              <input    type="email" class="form-control" placeholder="Enter Email ID." 
+                                        [(ngModel)]="supplier.EmailAddr" name="EmailAddr"  maxlength="150"
+                                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"  required/>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>Cc Email</label>
+                              <input    type="email" class="form-control" placeholder="Enter Cc Email ID." 
+                                        [(ngModel)]="supplier.CCEmail" name="CCEmail"  maxlength="150"
+                                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>BCC Email</label>
+                              <input    type="email" class="form-control" placeholder="Enter Bcc Email ID." 
+                                        [(ngModel)]="supplier.BccEmail" name="BccEmail"  maxlength="150"
+                                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"  />
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>Mobile No.<span class="errorMessage" style="color:red;">*</span></label>
+                              <input    type="text" class="form-control" placeholder="Enter Mobile No." 
+                                        [(ngModel)]="supplier.SupMobile" name="SupMobile"  
+                                        minlength="10" maxlength="10" saNumericonly required/>
+                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>Alternate Mobile No.</label>
+                              <input    type="text" class="form-control" placeholder="Enter Alternate Mobile No." 
+                                        [(ngModel)]="supplier.SupMobileAlt" name="SupMobileAlt"   
+                                        minlength="10" maxlength="10" saNumericonly />
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <div class="form-group text-center">
+                              <label class="checkbox-inline">
+                                  <input  type="checkbox" value="" 
+                                          [(ngModel)]="supplier.IsActive" name="IsActive">Is Active ?
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+
+                  <hr class="hr_basic" />
+
+                  <div class="row ">
+                      <div class="col-sm-12 ">
+                          <a class="btn btn-default pull-right" routerLink="/master/Supplier_list">
+                              <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back
+                          </a>
+                          <button class="btn btn-primary btn-right pull-right"  *ngIf="!loadershow" >
+                              <i class="glyphicon glyphicon-send"></i> &nbsp;&nbsp;Submit
+                          </button>
+                          <button  name="" class="btn btn-primary btn-right pull-right" *ngIf="loadershow">
+                              <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                          </button>
+                      </div>
+                  </div>
+
+                </form>
+                                                      
+            </div>
+            <!-- end widget content -->
+      
+          </div>
+          <!-- end widget div -->
+      
+        </div>
+        <!-- end widget -->
+      
+      </article>
+      <!-- WIDGET END -->
+      
+    </div>      
+    <!-- end row -->
+      
+  </sa-widgets-grid>
+  <!-- end widget grid -->
+            
+</div>
+<!-- END MAIN CONTENT -->
+      

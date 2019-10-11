@@ -1,0 +1,105 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+  <!-- widget grid -->
+  <sa-widgets-grid>
+
+    <!-- row -->
+    <div class="row">
+
+      <!-- NEW WIDGET START -->
+      <article class="col-sm-12 col-md-8 col-sm-offset-2">
+
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div sa-widget [colorbutton]="false" [editbutton]="false"   [deletebutton]="false"    [togglebutton]="false">
+       
+          <header>
+            <div class="text-center">
+            <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+            <h2>&nbsp;Product </h2>
+            </div>
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+            <!-- widget content -->
+            <div class="widget-body">
+                    <form name="ProductForm" #ProductForm="ngForm" (ngSubmit)="Productsave()" autocomplete="off" ngNativeValidate>
+              <div class="row">
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>Domain<span class="errorMessage" style="color:red;">*</span></label>
+   
+                          <select class="cleanSelect form-control" id="lng" [(ngModel)]="product.DomainCode" name="DomainCode"  (change)="GetProductSuite(product.DomainCode)"  required>
+                            <option value="" hidden>--Select Domain--</option>
+                            <option *ngFor="let Domain of DomainData" value="{{Domain.DomainCode}}">{{Domain.DomainName}}</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>Product Suite<span class="errorMessage" style="color:red;">*</span></label>
+                          <select class="cleanSelect form-control" id="lng" [(ngModel)]="product.PsuiteCode" name="PsuiteCode"    required>
+                            <option value="" hidden>--Select Product Suite--</option>
+                            <option *ngFor="let Psuit of PsuiteData" value="{{Psuit.PsuiteCode}}">{{Psuit.PsuiteName}}</option>
+                        </select>
+                      </div>
+                  </div>
+                </div>
+                <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Product<span class="errorMessage" style="color:red;">*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Product "  [(ngModel)]="product.ProductName" name="ProductName" maxlength="50" AlphaonlyDirective required/>
+                    </div>
+                </div>
+             
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group text-center">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value="" [(ngModel)]="product.IsActive" name="IsActive">Is Active ?
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <hr class="hr_basic" />
+            <div class="row ">
+                <div class="col-sm-12 ">
+                    <a class="btn btn-default pull-right" routerLink="/master/Product_list">
+                        <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back
+                    </a>
+                    <button class="btn btn-primary btn-right pull-right"  *ngIf="!loadershow" >
+                        <i class="glyphicon glyphicon-send"></i> &nbsp;&nbsp;Submit
+                    </button>
+                    <button type="button" name="" class="btn btn-primary btn-right pull-right" *ngIf="loadershow">
+                        <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                    </button>
+                </div>
+            </div>
+          </form>
+                                                
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+        <!-- end widget -->
+
+      </article>
+      <!-- WIDGET END -->
+
+    </div>
+
+    <!-- end row -->
+
+  </sa-widgets-grid>
+  <!-- end widget grid -->
+
+
+</div>
+<!-- END MAIN CONTENT -->

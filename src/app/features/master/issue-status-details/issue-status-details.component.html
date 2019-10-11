@@ -1,0 +1,104 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <sa-widgets-grid>
+  
+      <!-- row -->
+      <div class="row">
+  
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-6 col-sm-offset-3">
+  
+          <!-- Widget ID (each widget will need unique ID)-->
+          <div sa-widget [colorbutton]="false" [editbutton]="false"   [deletebutton]="false"    [togglebutton]="false">
+         
+            <header>
+                <div class="text-center">
+              <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+              <h2>&nbsp;Status Remark</h2>
+              </div>
+            </header>
+  
+            <!-- widget div-->
+            <div>
+  
+              <!-- widget content -->
+              <div class="widget-body">
+                      <form name="issueForm" #issueForm="ngForm" (ngSubmit)="PostIssue()" autocomplete="off" ngNativeValidate>
+                <div class="row">
+                  
+                    <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Status<span class="errorMessage" style="color:red;">*</span></label>
+                                <select class="form-control" [(ngModel)]="issuestatus.StatType" name="StatType" required>
+                                    <option value="" hidden selected>Select Status</option>
+                                    <option value="PE" >Not Assigned</option>
+                                    <option value="DR" >Dropped</option>
+                                    <option value="CL" >Closed</option>
+                                    
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label>Status Remark<span class="errorMessage" style="color:red;">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter Status Remark " maxlength="50" saAlphaonly [(ngModel)]="issuestatus.StatDesc" name="StatDesc" required/>
+                            </div>
+                        </div>
+                
+                  </div>
+             
+               
+          
+              <div class="row">
+                    <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox"  [(ngModel)]="issuestatus.IsOpen" name="IsOpen" >Tick here to keep it open ?
+                                </label>
+                            </div>
+                        </div>
+                  <div class="col-sm-2">
+                      <div class="form-group">
+                          <label class="checkbox-inline">
+                              <input type="checkbox"  [(ngModel)]="issuestatus.IsActive" name="IsActive" >Is Active ?
+                          </label>
+                      </div>
+                  </div>
+              </div>
+              <hr class="hr_basic" />
+              <div class="row ">
+                  <div class="col-sm-12 ">
+                      <a class="btn btn-default pull-right" routerLink="/master/issue_status_list">
+                          <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back
+                      </a>
+                      <button class=" btn btn-primary btn-right pull-right" type="submit" *ngIf="!loadershow" >
+                          <i class="glyphicon glyphicon-send"></i> &nbsp;&nbsp;Submit
+                      </button>
+                      <button type="button" name="" class="btn btn-primary btn-right pull-right" *ngIf="loadershow">
+                          <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                      </button>
+                  </div>
+              </div>
+            </form>
+                                                  
+              </div>
+              <!-- end widget content -->
+  
+            </div>
+            <!-- end widget div -->
+  
+          </div>
+          <!-- end widget -->
+  
+        </article>
+        <!-- WIDGET END -->
+  
+      </div>
+    </sa-widgets-grid>
+    <!-- end widget grid -->
+  
+  
+  </div>
+  <!-- END MAIN CONTENT -->
+  

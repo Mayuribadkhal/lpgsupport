@@ -1,0 +1,90 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <sa-widgets-grid>
+  
+      <!-- row -->
+      <div class="row">
+  
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-8 col-sm-offset-2">
+  
+          <!-- Widget ID (each widget will need unique ID)-->
+          <div sa-widget [colorbutton]="false" [editbutton]="false"   [deletebutton]="false"    [togglebutton]="false">
+         
+            <header>
+            <div class="text-center">
+              <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+              <h2> &nbsp;Employee Designation</h2>
+              </div>
+            </header>
+  
+            <!-- widget div-->
+            <div>
+  
+              <!-- widget content -->
+              <div class="widget-body">
+                      <form name="designationForm" #designationForm="ngForm" (ngSubmit)="PostDesignation()" autocomplete="off" ngNativeValidate>
+            
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>Designation<span class="errorMessage" style="color:red;">*</span></label>
+                              <input type="text" class="form-control" placeholder="Enter Designation" maxlength="30" saAlphaonly [(ngModel)]="designation.DesgName" name="DesgName" required/>
+                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>Designation Level<span class="errorMessage" style="color:red;">*</span></label>
+                              <input type="text" class="form-control" placeholder="Enter Designation Level" maxlength="50" saNumericDotOnly [(ngModel)]="designation.DesgLevel" name="DesgLevel" required/>
+                          </div>
+                      </div>
+                 </div>
+              <div class="row">
+                  <div class="col-sm-12">
+                      <div class="form-group text-center">
+                          <label class="checkbox-inline">
+                              <input type="checkbox"  [(ngModel)]="designation.IsActive" name="IsActive">Is Active ?
+                          </label>
+                      </div>
+                  </div>
+              </div>
+              <hr class="hr_basic" />
+              <div class="row ">
+                  <div class="col-sm-12 ">
+                      <a class="btn btn-default pull-right" routerLink="/master/designation_list">
+                          <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back
+                      </a>
+                      <button class=" btn btn-primary btn-right pull-right" type="submit" *ngIf="!loadershow">
+                          <i class="glyphicon glyphicon-send"></i> &nbsp;&nbsp;Submit
+                      </button>
+                      <button type="button" name="" class="btn btn-primary btn-right pull-right" *ngIf="loadershow">
+                          <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                      </button>
+                  </div>
+              </div>
+            </form>
+                                                  
+              </div>
+              <!-- end widget content -->
+  
+            </div>
+            <!-- end widget div -->
+  
+          </div>
+          <!-- end widget -->
+  
+        </article>
+        <!-- WIDGET END -->
+  
+      </div>
+  
+      <!-- end row -->
+  
+    </sa-widgets-grid>
+    <!-- end widget grid -->
+  
+  
+  </div>
+  <!-- END MAIN CONTENT -->
+  

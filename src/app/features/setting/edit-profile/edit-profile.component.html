@@ -1,0 +1,132 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+        <!-- widget grid -->
+        <sa-widgets-grid>
+      
+          <!-- row -->
+          <div class="row">
+      
+            <!-- NEW WIDGET START -->
+            <article class="col-sm-12 col-md-8 col-sm-offset-2">
+      
+              <!-- Widget ID (each widget will need unique ID)-->
+              <div sa-widget [colorbutton]="false" [editbutton]="false"   [deletebutton]="false"    [togglebutton]="false">
+             
+                <header>
+                        <div class="text-center">
+                  <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+                  <h2>&nbsp;Edit Profile</h2>
+                  </div>
+                </header>
+      
+                <!-- widget div-->
+                <div>
+      
+                  <!-- widget content -->
+                  <div class="widget-body">
+                          <form name="EditpForm" #EditpForm="ngForm" (ngSubmit)="EditProfile()" ngNativeValidate>
+                    <!-- <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Employee type<span class="errorMessage" style="color:red;">*</span></label>
+                                <select class="cleanSelect form-control" id="lng" [(ngModel)]="editp.EmpType"name="EmpType" required>
+                                    <option value="" hidden>--Select Employee type--</option>
+                                    <option value="EX">External</option>
+                                    <option value="IN">Internal</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Company Name<span class="errorMessage" style="color:red;">*</span></label>
+                                    <input type="text" class="form-control" placeholder="Enter Company Name" [(ngModel)]="editp.CompanyName" name="CompanyName" saAlphaonly   required/>
+                                </div>
+                            </div>
+                            
+                      </div> -->
+                      <div class="row">
+                            <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Employee Name<span class="errorMessage" style="color:red;">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter Employee Name"  [(ngModel)]="editp.EmpName" name="EmpName" saAlphaonly required/>
+                                    </div>
+                                </div>
+    
+                          <div class="col-sm-6">
+                              <div class="form-group">
+                                  <label>Gender<span class="errorMessage" style="color:red;">*</span></label>
+                                  <select class="form-control" [(ngModel)]="editp.Gender"name="Gender" required>
+                                    <option value="" hidden selected>--Select Gender--</option>
+                                    <option value="M" selected>Male</option>
+                                    <option value="F" selected>Female</option>
+                                    </select>
+                              </div>
+                          </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>Mobile No.<span class="errorMessage" style="color:red;">*</span></label>
+                              <input type="text" class="form-control" placeholder="Enter Mobile No." [(ngModel)]="editp.EmpMobile" name="EmpMobile" minlength="10" maxlength="10" saNumericonly required/>
+                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>Email ID.<span class="errorMessage" style="color:red;">*</span></label>
+                              <input type="email" class="form-control" placeholder="Enter Email ID." [(ngModel)]="editp.EmpEmail" name="EmpEmail"  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"  required/>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Designation<span class="errorMessage" style="color:red;">*</span></label>
+                                <!-- <input type="text" class="form-control" placeholder="Enter Email ID." [(ngModel)]="employeed.DegnCode" name="DegnCode"  required/> -->
+                                <select class="cleanSelect form-control" id="lng" [(ngModel)]="editp.DesgCode" name="DesgCode" >
+                                    <option value="" hidden selected>--Select Designation--</option>
+                                    <option *ngFor="let desgi of DesigData" value="{{desgi.DesgCode}}">{{desgi.DesgName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                     
+                      </div>
+                    
+                  <hr class="hr_basic" />
+                  <div class="row ">
+                      <div class="col-sm-12 ">
+                          <!-- <a class="btn btn-default pull-right" routerLink="/master/employee_list">
+                              <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back
+                          </a> -->
+                          <button class=" btn btn-primary btn-right pull-right" type="submit"  *ngIf="!loadershow" >
+                              <i class="glyphicon glyphicon-send"></i> &nbsp;&nbsp;Submit
+                          </button>
+                          <button type="button" name="" class="pull-right btn btn-primary" *ngIf="loadershow"  >
+                              <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                          </button>
+                      </div>
+                  </div>
+                </form>
+                                                      
+                  </div>
+                  <!-- end widget content -->
+      
+                </div>
+                <!-- end widget div -->
+      
+              </div>
+              <!-- end widget -->
+      
+            </article>
+            <!-- WIDGET END -->
+      
+          </div>
+      
+          <!-- end row -->
+      
+        </sa-widgets-grid>
+        <!-- end widget grid -->
+      
+      
+      </div>
+      <!-- END MAIN CONTENT -->
+      

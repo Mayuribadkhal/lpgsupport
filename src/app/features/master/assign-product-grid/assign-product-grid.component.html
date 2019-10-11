@@ -1,0 +1,37 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <sa-widgets-grid>
+      <div class="row">
+        <article class="col-sm-12 col-md-12 ">
+          <div sa-widget [colorbutton]="false" [editbutton]="false"  [togglebutton]="false"  [deletebutton]="false">
+        
+                <header>
+                  <div class="text-center">
+                  <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+                  <h2>&nbsp;Assign Product To Employee </h2>
+                  </div>
+                </header>
+                <div>
+                  <div class="widget-body">
+                      <div class="row">
+                        <div class="col-sm-12 ">
+                          <div class="form-group ">
+                              <a routerLink="/master/Assign_product" class="btn btn-primary pull-right "><i class="fa fa-plus"></i> Add </a>                  
+                          </div>
+                        </div>
+                      </div><br>
+                      <div class="row">
+                        <div class="col-sm-12 ">
+                          <assproductlist-grid [data]="gridOptions| async"></assproductlist-grid>
+                        </div>
+                      </div>
+                  </div>                        
+                </div>
+                </div>
+        </article>
+      </div>
+    </sa-widgets-grid>
+  </div>
+
+  

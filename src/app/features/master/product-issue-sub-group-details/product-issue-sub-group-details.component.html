@@ -1,0 +1,213 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <sa-widgets-grid>
+  
+      <!-- row -->
+      <div class="row">
+  
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-8 col-sm-offset-2">
+  
+          <!-- Widget ID (each widget will need unique ID)-->
+          <div sa-widget [colorbutton]="false" [editbutton]="false"   [deletebutton]="false"    [togglebutton]="false">
+         
+            <header>
+            <div class="text-center">
+              <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+              <h2>&nbsp;Product Issue Sub Type </h2>
+              </div>
+            </header>
+  
+            <!-- widget div-->
+            <div>
+  
+              <!-- widget content -->
+              <div class="widget-body">
+                      <form name="prodIssueSubGroupForm" #bankForm="ngForm" (ngSubmit)="OnSubmit()" ngNativeValidate>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                                <label>Domain<span class="errorMessage" style="color:red;">*</span></label>
+                                <select class="cleanSelect form-control" id="lng" 
+                                        [(ngModel)]="prodIssueSubType.DomainCode" name="DomainCode" [disabled]="Pissue"
+                                        (change)="GetProductSuiteNames(prodIssueSubType.DomainCode)"  required>
+                                    <option value="" hidden>--Select Domain--</option>
+                                    <option selected *ngFor ="let item of domainname" value={{item.DomainCode}}>{{item.DomainName}}</option>
+                                   
+                                </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                                <label>Product Suite <span class="errorMessage" style="color:red;">*</span></label>
+                                <select class="cleanSelect form-control" id="lng" 
+                                        [(ngModel)]="prodIssueSubType.PsuiteCode" name="PsuiteCode" [disabled]="Pissue"
+                                        (change)="GetProductNames(prodIssueSubType.PsuiteCode,prodIssueSubType.DomainCode)"  required>
+                                    <option value="" hidden>--Select Product Suite--</option>
+                                    <option selected *ngFor ="let item of productsuitename" value={{item.PsuiteCode}}>{{item.PsuiteName}}</option>
+                                </select>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                    <label>Product <span class="errorMessage" style="color:red;">*</span></label>
+                                    <select class="cleanSelect form-control" id="lng" 
+                                            [(ngModel)]="prodIssueSubType.ProductCode" name="ProductCode"  [disabled]="Pissue"
+                                            (change)="GetProductIssueTypeNames(prodIssueSubType.PsuiteCode,prodIssueSubType.DomainCode,prodIssueSubType.ProductCode)"required>
+                                        <option value="" hidden>--Select Product--</option>
+                                        <option selected *ngFor ="let item of productname" value={{item.ProductCode}}>{{item.ProductName}}</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                    <label>Product Issue Type<span class="errorMessage" style="color:red;">*</span></label>
+                                    <select class="cleanSelect form-control" 
+                                            id="lng" [(ngModel)]="prodIssueSubType.ProdissueCode" 
+                                            name="ProdissueCode" 
+                                            [disabled]="Pissue" required>
+                                        <option value="" hidden>--Select Product Issue Type--</option>
+                                        <option selected *ngFor ="let item of productissuetypename" value={{item.ProdissueCode}}>{{item.ProdgDesc}}</option>
+                                    </select>
+                            </div>
+                        </div>
+                      </div>
+
+                  <div class="row">
+                  <div class="col-sm-12">
+                      <div class="form-group">
+                          <label>Product Issue Sub Type Description<span class="errorMessage" style="color:red;">*</span></label>
+                          <input type="text" class="form-control" placeholder="Enter Product Issue Sub Type Description" 
+                                [(ngModel)]="prodIssueSubType.ProdsgDesc" name="ProdsgDesc" 
+                                autocomplete="off" saAlphaonly  required/>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Related To (Supplier Details) </label>
+                        <select class="cleanSelect form-control" id="lng" [(ngModel)]="prodIssueSubType.SuplierId" 
+                                name="SuplierId" >
+                            <option value="" hidden>--Select Related To--</option>
+                            <option selected *ngFor ="let item of supplyname" value={{item.SuplierId}}>{{item.SuplierName}}</option>
+                        </select>
+                     </div>
+                </div>
+                <div class="col-sm-6" style="margin-top:27px;">
+                    <div class="form-group">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value="" [(ngModel)]="prodIssueSubType.IsAutoClose" (change)="disableenable()" name="IsAutoClose" >Is Auto Closed ?
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6" [hidden]="prodIssueSubType.IsAutoClose==true? false : true">
+                    <div class="form-group">
+                        <label>Employee <span class="errorMessage" style="color:red;">*</span></label>
+                        <select class="cleanSelect form-control" id="lng" 
+                                [(ngModel)]="prodIssueSubType.DefEmpCode" name="DefEmpCode"
+                                [disabled]="prodIssueSubType.IsAutoClose==true? false : true" required>
+                            <option value="" hidden selected>--Select Employee--</option>
+                            <option selected *ngFor ="let item of employeename" value={{item.EmpCode}}>{{item.EmpName}}</option>
+                        </select>
+                     </div>
+                </div>
+                <div class="col-sm-6" [hidden]="prodIssueSubType.IsAutoClose==true? false : true">
+                    <div class="form-group">
+                        <label>Status Type <span class="errorMessage" style="color:red;">*</span></label>
+                        <select class="cleanSelect form-control" id="lng" 
+                                [(ngModel)]="prodIssueSubType.StatusCode" name="StatusCode"
+                                [disabled]="prodIssueSubType.IsAutoClose==true? false : true"  required>
+                                <option value="" hidden selected>--Select Status Type--</option>
+                                <option selected *ngFor ="let item of statusType" value={{item.StatusCode}}>{{item.StatDesc}}</option>
+                        </select>
+                               
+                     </div>
+                </div>
+
+            </div>
+
+
+              <div class="row">
+                    <div class="col-sm-6">
+                            <div class="form-group ">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" value="" [(ngModel)]="prodIssueSubType.IsMailSend" name="IsMailSend" >Send distributor an acknowledgement to close the ticket?
+                                </label>
+                                
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                                <div class="form-group ">
+                                    
+                                    <label class="checkbox-inline" >
+                                        <input type="checkbox" value="" [(ngModel)]="prodIssueSubType.IsGlobal" (change)="IsGlobalChanged()" name="IsGlobal" >Is Global ?
+                                    </label>
+                                </div>
+                            </div>
+                        <div class="col-sm-3">
+                            <div class="form-group ">
+                                
+                                <label class="checkbox-inline" >
+                                    <input  type="checkbox" value="" 
+                                            [(ngModel)]="prodIssueSubType.IsActive" name="IsActive"
+                                            [disabled]= "prodIssueSubType.IsGlobal==true? true:false" >Is Active ?
+                                </label>
+                            </div>
+                        </div>
+                  <!-- <div class="col-sm-3">
+                      <div class="form-group ">
+                          <label class="checkbox-inline">
+                              <input type="checkbox" value="" [(ngModel)]="prodIssueSubType.IsActive" name="IsActive" >Is Active ?
+                          </label>
+                      </div>
+                  </div> -->
+              
+              </div>
+           
+              <hr class="hr_basic" />
+              <div class="row ">
+                  <div class="col-sm-12 ">
+                      <a class="btn btn-default pull-right" routerLink="/master/product_issue_dub_group">
+                          <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back
+                      </a>
+                      <button class=" btn btn-primary btn-right pull-right" type="submit" *ngIf="!loadershow" >
+                          <i class="glyphicon glyphicon-send"></i> &nbsp;&nbsp;Submit
+                      </button>
+                      <button type="button" name="" class="btn btn-primary btn-right pull-right" *ngIf="loadershow">
+                          <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                      </button>
+                  </div>
+              </div>
+            </form>
+                                                  
+              </div>
+              <!-- end widget content -->
+  
+            </div>
+            <!-- end widget div -->
+  
+          </div>
+          <!-- end widget -->
+  
+        </article>
+        <!-- WIDGET END -->
+  
+      </div>
+  
+      <!-- end row -->
+  
+    </sa-widgets-grid>
+    <!-- end widget grid -->
+  
+  
+  </div>
+  <!-- END MAIN CONTENT -->
+  

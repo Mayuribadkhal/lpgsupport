@@ -1,0 +1,103 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <sa-widgets-grid>
+  
+      <!-- row -->
+      <div class="row">
+  
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-12 ">
+  
+          <!-- Widget ID (each widget will need unique ID)-->
+          <div sa-widget [colorbutton]="false" [editbutton]="false"  [togglebutton]="false"  [deletebutton]="false">
+        
+                <header>
+                <div class="text-center">
+                  <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+                  <h2> &nbsp;Dropped Tickets</h2>
+                  </div>div>
+                </header>
+  
+                <!-- widget div-->
+                <div>
+                <form name="frmdropped" #frmdropped="ngForm" (ngSubmit)="GetDetails()" ngNativeValidate>
+                  <!-- widget content -->
+                  <div class="widget-body">
+  
+                      <div class="row">
+                          <div class="col-sm-2 ">
+                          <div class="form-group">
+                              <label>Product </label>
+                              <select class="cleanSelect form-control" id="lng" [(ngModel)]="dropped.ProductCode" name="ProductCode" (change)="GetProductIssue(dropped.ProductCode)">
+                                  <option value="" hidden>--Select Product--</option>
+                                  <option *ngFor="let item of ProdDetails" value="{{item.ProductCode}}" >{{item.ProductName}}</option>
+                                 
+                              </select>
+                          </div>
+                        </div>
+                        <div class="col-sm-2 ">
+                            <div class="form-group">
+                                <label>Product issue </label>
+                                <select class="cleanSelect form-control" id="lng"  [(ngModel)]="dropped.ProdissueCode" name="ProdissueCode" >
+                                    <option value="" hidden>--Select Product Issue--</option>
+                                    <option *ngFor="let item of ProdIssueDetails" value="{{item.ProdissueCode}}" >{{item.ProdgDesc}}</option>
+                                </select>
+                            </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label>From date<span class="errorMessage" style="color:red;">*</span></label>
+                                  <input type="text" class="form-control"  autocomplete="off" 
+                                  placeholder="Select Month & Year" 
+                                  onkeydown="return false" 
+                                  [(ngModel)]="dropped.FDate" name="FDate"
+                                  (bsValueChange)="onValueChange($event)" 
+                                  [bsConfig]="{containerClass: 'theme-dark-blue',minDate:0,maxDate:maxdate,showWeekNumbers:false,dateInputFormat:'DD-MMM-YYYY', minMode: 'month'}"                             
+                                  bsDatepicker required />
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label>To date<span class="errorMessage" style="color:red;">*</span></label>
+                                  <input type="text" class="form-control"  autocomplete="off" 
+                                  placeholder="Select Month & Year" 
+                                  onkeydown="return false"
+                                  [(ngModel)]="dropped.TDate" name="TDate" 
+                                  [bsConfig]="{containerClass: 'theme-dark-blue',minDate:0,maxDate:maxdate,showWeekNumbers:false,dateInputFormat:'DD-MMM-YYYY', minMode: 'month'}"                            
+                                  bsDatepicker required />
+                              </div>
+                          </div>
+                        <div class="col-sm-2" style="margin-top:25px;">
+                          <div class="form-group ">
+                              <button  class="btn btn-primary" type="submit" *ngIf="!btnshow" ><i class="glyphicon glyphicon-send"></i>  Get Details </button>  
+                              <button type="button" name="" class="btn btn-primary" *ngIf="btnshow" >
+                                <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                            </button>                
+                          </div>
+                        </div>
+                       
+                      </div><br>
+                      <div class="row">
+                        <div class="col-sm-12" *ngIf="gridHide">
+                          <dropped-grid [data]="gridOptions| async"></dropped-grid>
+                        </div>
+                      </div>
+                  </div>
+                </form>                                   
+                </div>
+             
+  
+                </div>
+        </article>
+      </div>
+  
+      <!-- end row -->
+  
+    </sa-widgets-grid>
+    <!-- end widget grid -->
+  
+  
+  </div>
+  <!-- END MAIN CONTENT -->
+  

@@ -1,0 +1,59 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <sa-widgets-grid>
+  
+      <!-- row -->
+      <div class="row">
+  
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-12 ">
+  
+          <!-- Widget ID (each widget will need unique ID)-->
+          <div sa-widget [colorbutton]="false" [editbutton]="false"  [togglebutton]="false"  [deletebutton]="false">
+        
+                <header>
+                    <div class="text-center">
+                  <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+                  <h2>&nbsp;Supplier</h2>
+                </div>
+                </header>
+  
+                <!-- widget div-->
+                <div>
+  
+                  <!-- widget content -->
+                  <div class="widget-body">
+  
+                      <div class="row">
+                        <div class="col-sm-12 ">
+                          <div class="form-group ">
+                              <a routerLink="/master/Supplier_details" class="btn btn-primary pull-right "><i class="fa fa-plus"></i> Add </a>                  
+                          </div>
+                        </div>
+                      </div><br>
+                      <div class="row">
+                        <div class="col-sm-12 ">
+                           
+                          <supplier-list-grid [data]="gridOptions| async"></supplier-list-grid>
+  
+                        </div>
+                      </div>
+                  </div>
+                                                      
+                </div>
+             
+  
+                </div>
+        </article>
+      </div>
+  
+      <!-- end row -->
+  
+    </sa-widgets-grid>
+    <!-- end widget grid -->
+  
+  
+  </div>
+  <!-- END MAIN CONTENT -->
+  

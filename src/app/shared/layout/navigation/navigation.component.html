@@ -1,0 +1,94 @@
+<aside id="left-panel">
+
+  <!-- User info -->
+  <sa-login-info></sa-login-info>
+  <!-- end user info -->
+  <!-- <div id="logo-group">
+      <span id="logo"> <img src="assets/img/support1.png" alt="SmartAdmin"> </span>
+     
+    </div> -->
+
+  <nav>
+    <!-- NOTE: Notice the gaps after each icon usage <i></i>..
+    Please note that these links work a bit different than
+    traditional href="" links. See documentation for details.
+    -->
+    
+
+    <ul saSmartMenu>
+      <!-- <li routerLinkActive="active">
+          <a routerLink="/home" title="Home"><i class="fa fa-lg fa-fw fa-home"></i><span
+            class="menu-item-parent">{{'Home' | i18n}}</span></a>
+      </li> -->
+      <!-- <li> <span id="logo"> <img src="assets/img/support1.png" alt="SmartAdmin"> </span></li> -->
+      <li *ngIf="hidemenu">
+          <a href="#"><i class="fa fa-lg fa-fw fa-database"></i> <span
+            class="menu-item-parent">Master</span></a>
+          <ul>
+            <li routerLinkActive="active">
+              <a routerLink="/master/domain_list">Domain</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/master/Product_suit_list">Product Suite</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/master/Product_list">Product </a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/master/designation_list">Employee Designation </a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/master/employee_list">Employee </a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/master/issue_status_list">Status Remark </a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/master/Supplier_list">Supplier </a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/master/Product_issue_group">Product Issue Type</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/master/product_issue_dub_group">Product Issue Sub Type</a>
+            </li>
+          
+            <li routerLinkActive="active">
+              <a routerLink="/master/Assign_product_list">Assign Product To Employee </a>
+            </li>
+         
+          </ul>
+        </li>
+        <li>
+            <a routerLink="/transaction/open" title="Dashboard"><i class="fa fa-lg fa-fw fa-file-o"></i> <span
+              class="menu-item-parent">Open Tickets</span></a>
+          </li>
+         <li>
+          <a routerLink="/transaction/pending" title="Dashboard"><i class="fa fa-lg fa-fw fa-clock-o"></i> <span
+            class="menu-item-parent">Pending Tickets</span></a>
+        </li>
+        <li>
+            <a routerLink="/transaction/dropped" title="Dashboard"><i class="fa fa-lg fa-fw fa-times-circle"></i> <span
+              class="menu-item-parent">Dropped Tickets</span></a>
+        </li>
+       
+        <li>
+          <a routerLink="/transaction/closed" title="Dashboard"><i class="fa fa-lg fa-fw fa-check-circle"></i> <span
+            class="menu-item-parent">Closed Tickets</span></a>
+        </li>
+         
+             
+         <li *ngIf="hidemenu">
+          <a routerLink="/transaction/report" title="Dashboard"><i class="fa fa-lg fa-fw fa-file"></i> <span
+            class="menu-item-parent">Reports</span></a>
+        </li>
+
+     
+    </ul>
+    
+
+  </nav>
+
+  <sa-minify-menu></sa-minify-menu>
+
+</aside>

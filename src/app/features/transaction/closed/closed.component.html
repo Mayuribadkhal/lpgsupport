@@ -1,0 +1,107 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <sa-widgets-grid>
+  
+      <!-- row -->
+      <div class="row">
+  
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-12 ">
+  
+          <!-- Widget ID (each widget will need unique ID)-->
+          <div sa-widget [colorbutton]="false" [editbutton]="false"  [togglebutton]="false"  [deletebutton]="false">
+        
+                <header>
+                    <div class="text-center">
+                  <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+                  <h2> &nbsp;Closed Tickets</h2>
+                  </div>
+                </header>
+  
+                <!-- widget div-->
+                <div>
+  
+                  <!-- widget content -->
+                  <div class="widget-body">
+                    <form name="closedTicketForm" #closedTicketForm="ngForm" (ngSubmit)="OnGetDetails()"  ngNativeValidate>
+                      <div class="row">
+                          <div class="col-sm-2 ">
+                          <div class="form-group">
+                              <label>Product </label>
+                              <select class="cleanSelect form-control" id="lng"  
+                                      [(ngModel)]="closedTicket.ProductCode" name="ProductCode"
+                                      (change)="GetProductIssueTypeNames(closedTicket.ProductCode)">
+                                      <option value="" hidden>--Select Product--</option>
+                                      <option selected *ngFor ="let item of productname" value={{item.ProductCode}}>{{item.ProductName}}</option>
+                                 
+                              </select>
+                          </div>
+                        </div>
+                        <div class="col-sm-2 ">
+                            <div class="form-group">
+                                <label>Product issue </label>
+                                <select class="cleanSelect form-control" id="lng"  
+                                        [(ngModel)]="closedTicket.ProdissueCode" name="ProdissueCode"  >
+                                    <option value="" hidden>--Select Product Issue--</option>
+                                    <option selected *ngFor ="let item of productissuetypename" value={{item.ProdissueCode}}>{{item.ProdgDesc}}</option>
+                                   
+                                </select>
+                            </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label>From date<span class="errorMessage" style="color:red;">*</span></label>
+                                  <input  type="text" class="form-control" placeholder="Select From Date"
+                                          [(ngModel)]="closedTicket.FDate" name="FDate"
+                                          bsDatepicker
+                                          autocomplete="off"
+                                          [bsConfig]="{containerClass: 'theme-dark-blue',minDate:mindate,maxDate:maxdate,showWeekNumbers:false,dateInputFormat:'DD-MMM-YYYY'}"
+                                          (change)="MakeFromAndToDateSame()" required/>
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label>To date<span class="errorMessage" style="color:red;">*</span></label>
+                                  <input  type="text" class="form-control" placeholder="Select To Date"
+                                          [(ngModel)]="closedTicket.TDate" name="TDate"                                      
+                                          bsDatepicker
+                                          autocomplete="off"
+                                          [bsConfig]="{containerClass: 'theme-dark-blue',minDate:0,maxDate:maxdate,showWeekNumbers:false,dateInputFormat:'DD-MMM-YYYY'}"
+                                          required/>
+                              </div>
+                          </div>
+                        <div class="col-sm-2" style="margin-top:25px;">
+                          <div class="form-group ">
+                              <button  class="btn btn-primary btn-right" *ngIf="!loadershow" type ="submit"><i class="glyphicon glyphicon-send"></i>  Get Details </button> 
+                              
+                              <button  name="" class="btn btn-primary btn-right" *ngIf="loadershow">
+                                <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                              </button>                 
+                          </div>
+                        </div>
+                      </div><br>
+                      <div class="row">
+                        <div class="col-sm-12 " *ngIf="ShowGrid">
+                          <closed-trans-grid [data]="gridOptions| async"></closed-trans-grid>{{ data | json }}
+                        </div>
+                      </div>
+                      </form>
+                    </div>
+                                                      
+                </div>
+             
+  
+                </div>
+        </article>
+      </div>
+  
+      <!-- end row -->
+  
+    </sa-widgets-grid>
+    <!-- end widget grid -->
+  
+  
+  </div>
+  <!-- END MAIN CONTENT -->
+  

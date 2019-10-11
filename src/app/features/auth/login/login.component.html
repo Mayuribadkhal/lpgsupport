@@ -1,0 +1,64 @@
+<header id="header" class="animated fadeInDown">
+
+  <div id="logo-group" style="width:100%;text-align:center;">
+    <span id="logo" class="pull-left" style="width:10%!important;margin-top:18px;text-align:left!important;"><img src="assets/img/support1.png" alt="SmartAdmin" style="width:134px!important;"></span><span id="logo" style="margin-top:18px!important;width:80%;"> <p  style="font-weight: 500;font-size: 20px;color: #d7600a;">Production Support and Service Management</p> </span>
+  </div>
+  <!-- <span id="extr-page-header-space">
+      <a routerLink="/auth/register" class="btn btn-danger">Create Account</a> </span> -->
+  
+
+</header>
+<div id="main" role="main" class="animated fadeInDown">
+
+  <div id="content" class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
+            <!-- well -->
+            <div class="well">              
+         
+              <div  style=" height: 410px;">
+              <img src="assets/img/support_slider.jpg"  style=" height: 410px;width:710px;">
+            </div>
+            </div>
+            <!-- end well-->
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+        <div class="well no-padding" style="margin-top:21%;">
+          <form class="smart-form client-form" name="loginForm" #loginForm="ngForm" (ngSubmit)="LoginAccount()" ngNativeValidate>
+            <header>
+              Sign In
+            </header>
+            <fieldset>
+              <section>
+                <label class="label">E-mail</label>
+                <label class="input"> <i class="icon-append fa fa-user"></i>
+                  <input type="email" name="email" placeholder="Enter Email"   [(ngModel)]="login.EmpEmail" name="EmpEmail" autocomplete="off" pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' required>
+               </label>
+              </section>
+              <section>
+                <label class="label">Password</label>
+                <label class="input"> <i class="icon-append fa fa-lock"></i>
+                  <input type="password" name="password" placeholder="Enter password"   minlength="6"  maxlength="20" [(ngModel)]="login.EmpPwd" name="EmpPwd" required>
+              </label>
+
+                <div class="note">
+                  <a routerLink="/auth/forgot-password">Forgot password?</a>
+                </div>
+              </section>
+             
+            </fieldset>
+            <footer>
+              <button class="btn btn-primary" *ngIf="!loadershow">
+                Sign in
+              </button>
+              <button type="button" name="" class="btn btn-primary" *ngIf="loadershow">
+                <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+            </button>
+            </footer>
+          </form>
+        </div>
+     
+      </div>
+    </div>
+  </div>
+</div>

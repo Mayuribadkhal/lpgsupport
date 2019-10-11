@@ -1,0 +1,107 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+  <!-- widget grid -->
+  <sa-widgets-grid>
+
+    <!-- row -->
+    <div class="row">
+
+      <!-- NEW WIDGET START -->
+      <article class="col-sm-12 col-md-8 col-sm-offset-2">
+        <div sa-widget [colorbutton]="false" [editbutton]="false"   [deletebutton]="false"    [togglebutton]="false">
+       
+          <header>
+            <div class="text-center">
+            <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+            <h2>&nbsp;Assign Product To Employee </h2>
+            </div>
+          </header>
+          <div>
+            <div class="widget-body">
+                    <form name="AssprodForm" #AssprodForm="ngForm"  ngNativeValidate>
+              <div class="row">
+                    <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Employee<span  style="color:red;">*</span></label>
+                                <select class="cleanSelect form-control" id="lng" [(ngModel)]="assignprod.EmpCode" name="EmpCode"  [disabled]="buttonDisabled" required>
+                                      <option value="" hidden>--Select Employee--</option>
+                                      <option *ngFor="let emp of EmployeeData" value="{{emp.EmpCode}}">{{emp.EmpName}}</option>
+                                  </select>
+                            </div>
+                        </div>
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Domain<span  style="color:red;">*</span></label>
+                          <select class="cleanSelect form-control" id="lng" [(ngModel)]="assignprod.DomainCode" name="DomainCode"  (change)="GetProductSuite(assignprod.DomainCode)"  required>
+                                <option value="" hidden>--Select Domain--</option>
+                                <option *ngFor="let Domain of DomainData" value="{{Domain.DomainCode}}">{{Domain.DomainName}}</option>
+                            </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Product Suite<span  style="color:red;">*</span></label>
+                        <select class="cleanSelect form-control" id="lng" [(ngModel)]="assignprod.PsuiteCode" name="PsuiteCode"   (change)="GetProduct(assignprod.PsuiteCode)"  required>
+                                <option value="" hidden>--Select Product Suite--</option>
+                                <option *ngFor="let Psuit of PsuiteData" value="{{Psuit.PsuiteCode}}">{{Psuit.PsuiteName}}</option>
+                            </select>
+                    </div>
+                </div>
+                </div>
+                <div class="row" >
+                        <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Product<span  style="color:red;">*</span></label>
+                                    <select class="cleanSelect form-control" id="lng" [(ngModel)]="assignprod.ProductCode" name="ProductCode"   (change)="GetProductName(assignprod.ProductCode)"  required>
+                                            <option value="" hidden>--Select Product--</option>
+                                            <option *ngFor="let Prod of ProductData" value="{{Prod.ProductCode}}">{{Prod.ProductName}}</option>
+                                        </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-2" style="margin-top:28px;">
+                                    <div class="form-group text-center">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox"  ngTrueValue="'Y'" ngFalseValue="'N'" [(ngModel)]="assignprod.IsActive" name="IsActive" required >Is Active ?
+                                        </label>
+                                    </div>
+                                </div>
+                           
+                    <div class="col-sm-2" style="margin-top:22px;">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success" (click)="AddAssProd()" *ngIf="!addloadershow">
+                                <i class="glyphicon glyphicon-plus"></i> &nbsp;&nbsp;Add
+                            </button>
+                            <button type="button" name="" class="btn btn-success" *ngIf="addloadershow">
+                                <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                            </button>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="row">
+                     <div class="col-sm-12 " *ngIf="GridShow">
+                         <assproduct-grid [data]="gridOptions| async" ></assproduct-grid>
+                    </div>
+            </div>
+            <hr class="hr_basic" />
+            <div class="row ">
+                <div class="col-sm-12 ">
+                    <a class="btn btn-default pull-right" routerLink="/master/Assign_product_list">
+                        <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back
+                    </a>
+                    <button class="btn btn-primary btn-right pull-right"   (click)="AssignProductsave()" [disabled]="disablesubmit" *ngIf="!loadershow">
+                        <i class="glyphicon glyphicon-send"></i> &nbsp;&nbsp;Submit
+                    </button>
+                    <button type="button" name="" class="btn btn-primary btn-right pull-right" *ngIf="loadershow">
+                        <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                    </button>
+                </div>
+            </div>
+          </form>                           
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>
+<!-- END MAIN CONTENT -->

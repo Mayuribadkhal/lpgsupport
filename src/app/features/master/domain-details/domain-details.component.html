@@ -1,0 +1,85 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+  <!-- widget grid -->
+  <sa-widgets-grid>
+
+    <!-- row -->
+    <div class="row">
+
+      <!-- NEW WIDGET START -->
+      <article class="col-sm-12 col-md-6 col-sm-offset-3">
+
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div sa-widget [colorbutton]="false" [editbutton]="false"   [deletebutton]="false"    [togglebutton]="false">
+       
+          <header>
+            <div class="text-center">
+            <span class="widget-icon"> <i class="fa fa-database txt-color-green"></i> </span>
+            <h2>&nbsp;Domain </h2>
+            </div>
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+            <!-- widget content -->
+            <div class="widget-body">
+                
+                    <form name="DomainForm" #DomainData="ngForm" (ngSubmit)="saveDomain()" autocomplete="off" ngNativeValidate>
+              <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Domain<span class="errorMessage" style="color:red;">*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Domain" [(ngModel)]="domain.DomainName" name = "DomainName" maxlength="50" saAlphaonly  required/>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group text-center">
+                        <label class="checkbox-inline">
+                          
+                            <input type="checkbox"  [(ngModel)]="domain.IsActive" name="IsActive" value="">Is Active ?
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <hr class="hr_basic" />
+            <div class="row ">
+                <div class="col-sm-12 ">
+                    <a class="btn btn-default pull-right" routerLink="/master/domain_list">
+                        <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back
+                    </a>
+                    <button class=" btn btn-primary btn-right pull-right" type="submit" *ngIf="!loadershow" >
+                        <i class="glyphicon glyphicon-send"></i> &nbsp;&nbsp;Submit
+                    </button>
+                    <button type="button" name="" class="btn btn-primary btn-right pull-right" *ngIf="loadershow">
+                        <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i> Loading
+                    </button>
+                </div>
+            </div>
+          </form>
+                                                
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+        <!-- end widget -->
+
+      </article>
+      <!-- WIDGET END -->
+
+    </div>
+
+    <!-- end row -->
+
+  </sa-widgets-grid>
+  <!-- end widget grid -->
+
+
+</div>
+<!-- END MAIN CONTENT -->
